@@ -9,6 +9,8 @@ import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+
 /**
  * Created by ldd20 on 12/22/2016.
  */
@@ -54,13 +56,21 @@ public class Command implements CommandExecutor {
                             var1.sendMessage(ChatColor.GREEN + " Using sound \""+sound+"\"...");
 
                             if(var4[1].equals("enter")){
-                                configEnter.set(regionid, sound);
+                                if(!configEnter.contains(regionid))
+                                    configEnter.set(regionid, new ArrayList<String>());
+                                ArrayList<String> sounds = (ArrayList)configEnter.getStringList(regionid);
+                                sounds.add(sound);
+                                configEnter.set(regionid, sounds);
+                                //configEnter.set(regionid, sound);
                                 var1.sendMessage(ChatColor.GREEN + " Added to enter list for region \""+regionid+"\"!");
                                 SoundRegions.INSTANCE.saveConfig();
                                 populateMeta(sound);
                                 return true;
                             } else if(var4[1].equals("exit")){
-                                configLeave.set(regionid, sound);
+                                if(!configLeave.contains(regionid))
+                                    configLeave.set(regionid, new ArrayList<String>());
+                                configLeave.getStringList(regionid).add(sound);
+//                                configLeave.set(regionid, sound);
                                 var1.sendMessage(ChatColor.GREEN + " Added to exit list for region \""+regionid+"\"!");
                                 SoundRegions.INSTANCE.saveConfig();
                                 populateMeta(sound);

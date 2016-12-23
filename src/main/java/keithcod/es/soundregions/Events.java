@@ -54,7 +54,7 @@ public class Events implements Listener {
         ConfigurationSection configEnter = config.getConfigurationSection("enter");
 
         if(configEnter.contains(e.getRegion().getId())){
-            String sound = configEnter.getString(e.getRegion().getId());
+            List<String> sound = configEnter.getStringList(e.getRegion().getId());
             PlaySound(e.getRegion(), e.getPlayer(), sound);
 
         }
@@ -71,7 +71,7 @@ public class Events implements Listener {
         ConfigurationSection configLeave = config.getConfigurationSection("exit");
 
         if(configLeave.contains(e.getRegion().getId())){
-            String sound = configLeave.getString(e.getRegion().getId());
+            List<String> sound = configLeave.getStringList(e.getRegion().getId());
             PlaySound(e.getRegion(), e.getPlayer(), sound);
 
         }
@@ -97,6 +97,11 @@ public class Events implements Listener {
             //player.sendMessage("Stopping sounds...");
         }
 
+    }
+
+    public void PlaySound(ProtectedRegion region, final Player player, List<String> sounds) {
+        for(String s : sounds)
+            PlaySound(region, player, s);
     }
 
     public void PlaySound(ProtectedRegion region, final Player player, String sound){
