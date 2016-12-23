@@ -1,0 +1,10 @@
+name: Sound Region
+version: 1.0
+author: xNagisa_
+main: keithcod.es.soundregions.SoundRegions
+depend: [WorldGuard, WGRegionEvents]
+commands:
+  soundregion:
+    description: Play sounds in regions
+    usage: /soundregion <regionid> <type[remove,enter,exit]> [sound(e.g "record.13")]
+    aliases: [soundregion, sr, sregion]

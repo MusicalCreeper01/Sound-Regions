@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SoundRegions">
+    <output-path>D:/Spigot/RPG/plugins</output-path>
+    <root id="archive" name="SoundRegions.jar">
+      <element id="module-output" name="SoundRegions" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+    </root>
+  </artifact>
+</component>
